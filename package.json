@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "gulp serve",
     "serve": "gulp serve",
     "test": "COVERAGE_ENABLED=true gulp test"
   },
