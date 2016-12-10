@@ -3,7 +3,7 @@
         <a [routerLink]="['']">{{ 'pageTitle' | translate }}</a>
     </div>
     <div id="navbar">
-        <ul >
+        <ul>
             <li><a [routerLink]="['about']">{{ 'menu.about' | translate }}</a></li>
             <li><a [routerLink]="['']" *ngIf="!(getLoggedIn() | async)">{{ 'menu.login' | translate }}</a></li>
             <li><a [routerLink]="['add-flo']" *ngIf="getLoggedIn() | async">{{ 'menu.addFlo' | translate }}</a></li>

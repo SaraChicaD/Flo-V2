@@ -31,7 +31,7 @@ gulp.task('client-stylesheet-dist', stylesheetTask(true));
 gulp.task('client-style', eslintTask());
 
 gulp.task('client-stylesheet-watch', function() {
-  gulp.watch(['client/**/*.less', 'client/**/*.css'], ['client-stylesheet']);
+  gulp.watch(['client/boot.scss', 'client/**/*.scss'], ['client-stylesheet']);
 });
 
 gulp.task('clean', cleanTask());
