@@ -1,3 +1,7 @@
 .underlined {
     text-decoration: underline;
 }
+
+p {
+	color: black;	
+}
