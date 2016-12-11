@@ -1,13 +1,20 @@
-<div class="container">
-    <div class="navbar-header">
-        <a class="navbar-brand" [routerLink]="['']">{{ 'pageTitle' | translate }}</a>
+<div class="site-header--container">
+    <div class="site-header--logo">
+        <a class="site-header--logo-link" [routerLink]="['']">
+            <svg class="flo-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 64.758">
+                <title>FLO</title>
+                <path class="flo-logo--f" d="M.466,1.305H37.246q.348,1.918.523,3.574a29.94,29.94,0,0,1,.174,3.137,41.032,41.032,0,0,1-.7,6.885H15.893V25.535H32.715a35.352,35.352,0,0,1,.784,6.8,35.667,35.667,0,0,1-.784,6.885H15.893V63.71a47.318,47.318,0,0,1-7.669.785A46.442,46.442,0,0,1,.466,63.71Z" />
+                <path class="flo-logo--l" d="M51.452,1.479q2.355-.347,4.271-.523t3.4-.174q1.569,0,3.53.174t4.227.523V50.288H87.013a33.885,33.885,0,0,1,.567,3.792q.13,1.614.13,2.919,0,1.484-.13,3.095a37.086,37.086,0,0,1-.567,3.878H51.452Z" />
+                <path class="flo-logo--o" d="M95.643,32.856a49.476,49.476,0,0,1,1.613-12.943,29.18,29.18,0,0,1,4.968-10.328,23.288,23.288,0,0,1,8.541-6.842A28.3,28.3,0,0,1,123.1.259a28.026,28.026,0,0,1,12.29,2.484,23.409,23.409,0,0,1,8.5,6.842,29.239,29.239,0,0,1,4.968,10.328,49.574,49.574,0,0,1,1.613,12.943,48.573,48.573,0,0,1-1.613,12.856,28.838,28.838,0,0,1-4.968,10.2,22.791,22.791,0,0,1-8.5,6.711,28.9,28.9,0,0,1-12.29,2.4,29.189,29.189,0,0,1-12.333-2.4,22.681,22.681,0,0,1-8.541-6.711,28.78,28.78,0,0,1-4.968-10.2A48.478,48.478,0,0,1,95.643,32.856Zm38.61,0q0-19-11.069-19-11.331,0-11.331,19,0,9.5,2.745,14.163a9.179,9.179,0,0,0,8.5,4.663Q134.253,51.683,134.253,32.856Z" />
+            </svg>
+        </a>
     </div>
-    <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-            <li><a [routerLink]="['about']">{{ 'menu.about' | translate }}</a></li>
-            <li><a [routerLink]="['']" *ngIf="!(getLoggedIn() | async)">{{ 'menu.login' | translate }}</a></li>
-            <li><a [routerLink]="['add-flo']" *ngIf="getLoggedIn() | async">{{ 'menu.addFlo' | translate }}</a></li>
-            <li><a href="#" (click)="logout()" *ngIf="getLoggedIn() | async">{{ 'menu.logout' | translate }}</a></li>
+    <nav class="site-header--navigation" id="navbar">
+        <ul class="site-header--navigation-list">
+            <li class="site-header--navigation-list-item"><a class="site-header--navigation-list-item-link" [routerLink]="['about']">{{ 'menu.about' | translate }}</a></li>
+            <li class="site-header--navigation-list-item"><a class="site-header--navigation-list-item-link" [routerLink]="['']" *ngIf="!(getLoggedIn() | async)">{{ 'menu.login' | translate }}</a></li>
+            <li class="site-header--navigation-list-item"><a class="site-header--navigation-list-item-link" [routerLink]="['add-flo']" *ngIf="getLoggedIn() | async">{{ 'menu.addFlo' | translate }}</a></li>
+            <li class="site-header--navigation-list-item"><a class="site-header--navigation-list-item-link" href="#" (click)="logout()" *ngIf="getLoggedIn() | async">{{ 'menu.logout' | translate }}</a></li>
         </ul>
-    </div>
+    </nav>
 </div>

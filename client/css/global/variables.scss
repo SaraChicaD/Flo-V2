@@ -1,0 +1,87 @@
+$GlobalSettings: ();
+
+$ColorScheme: (
+  'primary color': color('purple', 50),
+  'secondary color': color('blue', 80),
+  'active link color': color('purple', 50),
+  'background color': color('white'),
+  'text color': color('blue', 80),
+  'black': color('gray', 90),
+  'white': color('white')
+);
+
+$GlobalSettings: map-merge($GlobalSettings, $ColorScheme);
+
+$TypographySettings: (
+  'small font': 16px,
+  'base line height': 1.5em,
+  'sans serif font': ('Helvetica Neue', Helvetica, 'Open Sans', Arial, 'Lucida Grande', 'Roboto', sans-serif),
+  'monospace font': ('Courier New', 'Lucida Console', monospace),
+  'light font weight': 300,
+  'normal font weight': 400,
+  'bold font weight': 600,
+  'transition all': (all .15s ease-in-out),
+  'large font break': 1300px
+);
+
+$GlobalSettings: map-merge($GlobalSettings, $TypographySettings);
+
+$golden: 1.618;
+$golden-large: (1 / $golden);
+$golden-small: (1 - $golden-large);
+
+$LayoutSettings: (
+  'rhythm': 1rem,
+  'fixed container': 900px,
+  'fixed container break': 1550px,
+  'column break large': 1200px,
+  'column break medium': 900px,
+  'main nav break': 700px,
+  'max character legnth': 800px,
+  'max character legnth break': 1000px,
+  'responsive form': 1000px,
+  'responsive table': 700px,
+  'two grid width medium': 540px,
+  'two grid width large': 623px,
+  'golden large': $golden-large * 100%,
+  'golden small': $golden-small * 100%,
+  'smaller than half': 48%
+);
+
+$GlobalSettings: map-merge($GlobalSettings, $LayoutSettings);
+
+$RhythmSettings: (
+  'half rhythm': setting-get('rhythm') / 2,
+  'quarter rhythm': setting-get('rhythm') / 4,
+  'one and a third rhythm': setting-get('rhythm') * (1 + 1/3),
+  'rhythm times two': setting-get('rhythm') * 2,
+  'rhythm times four': setting-get('rhythm') * 4,
+  'rhythm times eight': setting-get('rhythm') * 8,
+  'one and three fifths rhythm': setting-get('rhythm') * (1 + 3/5),
+  'two fifths rhythm': setting-get('rhythm') * .4
+);
+
+$GlobalSettings: map-merge($GlobalSettings, $RhythmSettings);
+
+$FormSettings: (
+  'input border color': setting-get('white'),
+  'input border width': 2px,
+  'input border radius': 0
+);
+
+$GlobalSettings: map-merge($GlobalSettings, $FormSettings);
+
+$RangeSettings: (
+  'range height': .5em,
+  'range thumb size': 1.5em,
+  'range outline width': .125em
+);
+
+$GlobalSettings: map-merge($GlobalSettings, $RangeSettings);
+
+// Configuration for 'modular-scale'
+$ms-base: 1em;
+$ms-ratio: $major-third;
+
+// General debug flag
+$debug: false;

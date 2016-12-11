@@ -1,0 +1,10 @@
+.login {
+
+    &--title {
+        @include h1;
+    }
+
+    &--button {
+        @include button(transparent, setting-get('text color'), setting-get('text color'), setting-get('active link color'), setting-get('active link color'), setting-get('white'));
+    }
+}

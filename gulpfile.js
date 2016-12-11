@@ -31,15 +31,22 @@ gulp.task('client-stylesheet-dist', stylesheetTask(true));
 gulp.task('client-style', eslintTask());
 
 gulp.task('client-stylesheet-watch', function() {
-  gulp.watch(['client/boot.less', 'client/**/*.less'], ['client-stylesheet']);
+  gulp.watch(['client/boot.scss', 'client/**/*.scss'], ['client-stylesheet']);
 });
 
 gulp.task('clean', cleanTask());
 
+let imagemin = require('gulp-imagemin');
+gulp.task('images', function(){
+  return gulp.src('client/images/**/*.+(png|jpg|gif|svg)')
+  .pipe(imagemin())
+  .pipe(gulp.dest('dist/client/images'))
+});
+
 gulp.task('serve', function(done) {
   runSequence(
     'clean',
-    ['client-build', 'client-copy', 'client-stylesheet', 'livereload', 'client-stylesheet-watch'],
+    ['client-build', 'client-copy', 'client-stylesheet', 'livereload', 'client-stylesheet-watch', 'images'],
     'server-start',
     done
   )
@@ -63,7 +70,7 @@ gulp.task('test-dev', function(done) {
 gulp.task('dist', function(done) {
   runSequence(
     'clean',
-    ['client-build-dist', 'client-copy-dist', 'client-stylesheet-dist', 'server-copy-dist', 'general-copy-dist'],
+    ['client-build-dist', 'client-copy-dist', 'client-stylesheet-dist', 'server-copy-dist', 'general-copy-dist', 'images'],
     done
   );
 });

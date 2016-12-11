@@ -1,0 +1,9 @@
+.main-content {
+    flex: 1;
+    margin-top: setting-get('rhythm') * 2;
+    width: 100%;
+
+    &--container {
+        @include wrapper;
+    }
+}

@@ -1,0 +1,23 @@
+// Once we install Sass, we can import it below
+// @import (inline) '../node_modules/bootstrap/dist/css/bootstrap.css';
+
+// NODE MODULES
+@import '../node_modules/sass-toolkit/stylesheets/toolkit/reset.scss';
+@import '../node_modules/sass-toolkit/stylesheets/toolkit.scss';
+@import '../node_modules/breakpoint-sass/stylesheets/breakpoint.scss';
+@import '../node_modules/modularscale-sass/stylesheets/modular-scale.scss';
+@import '../node_modules/ibm-design-colors/ibm-colors.scss';
+
+
+// GLOBAL THINGS
+@import 'css/global/variables.scss';
+@import 'css/global/mixins.scss';
+@import 'css/global/base.scss';
+
+// COMPONENTS
+@import 'css/components/login.scss';
+@import 'css/components/header.scss';
+@import 'css/components/footer.scss';
+@import 'css/components/main-content.scss';
+@import 'css/components/add-flo.scss';
+@import 'css/components/about.scss';
