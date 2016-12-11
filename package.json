@@ -34,6 +34,8 @@
     "koa-jwt": "1.2.0",
     "koa-router": "5.4.0",
     "koa-static": "2.0.0",
+    "moment": "^2.17.1",
+    "moment-timezone": "^0.5.10",
     "node-uuid": "1.4.7"
   },
   "devDependencies": {
