@@ -1,0 +1,44 @@
+.site-header {
+
+    .flo-logo {
+        display: block;
+        fill: setting-get('text color');
+        height: 23px;
+        transition: setting-get('transition all');
+        width: 50px;
+
+        &:hover,
+        &:active {
+            fill: setting-get('primary color');
+        }
+    }
+
+    &--top-menu {
+        @include wrapper;
+        display: block;
+    }
+
+    &--container {
+        display: flex;
+        padding: setting-get('rhythm') 0;
+    }
+
+    &--navigation {
+        margin-top: 0;
+    }
+
+    &--navigation-list {
+        display: flex;
+    }
+
+    &--navigation-list-item {
+        margin-top: 0;
+    }
+
+    &--navigation-list-item-link {
+        @include link(setting-get('text color'), setting-get('text color'), transparent, setting-get('active link color'));
+        display: block;
+        margin-left: setting-get('rhythm') * 2;
+        transform: translateY(2px);
+    }
+}

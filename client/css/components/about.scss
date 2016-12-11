@@ -1,0 +1,10 @@
+.about {
+
+    &--container {
+        //@include wrapper;
+    }
+
+    &--title {
+        @include h1;
+    }
+}

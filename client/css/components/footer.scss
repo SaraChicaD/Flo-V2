@@ -1,0 +1,13 @@
+.site-footer {
+    padding-bottom: setting-get('rhythm');
+    padding-top: setting-get('rhythm');
+    width: 100%;
+
+    &--container {
+        @include wrapper;
+    }
+
+    &--copy {
+
+    }
+}

@@ -1,15 +1,11 @@
-<div >
-    <div>
-        <h1>Add a Flo</h1>
-
+<div class="add-flo">
+    <div class="add-flo-container">
+        <h1 class="add-flo--title">Add a Flo</h1>
         <form (ngSubmit)="onSubmit()" class="flo-form">
           <!-- <div date-range id="pickerRange" start="dates.minDate" end="dates.maxDate" date-change="changeDate" view="date" min-view="date"></div> -->
 
-          <button id="event-button"
-              style="background-color: #00CD00; color: white; border-color: #00CD00; margin-top: 20px;"
-              ng-click="createEvent()">
-              CREATE FLO
-          </button>
+          <button class="add-flo--button" id="event-button"
+              ng-click="createEvent()">Create</button>
         </form>
     </div>
 </div>
