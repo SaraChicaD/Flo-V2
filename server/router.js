@@ -21,7 +21,6 @@ router.post('/login', function*() {
 
   this.body = result;
 
-  console.log('hit');
 });
 
 module.exports = router;

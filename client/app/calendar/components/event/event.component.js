@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChildren, Renderer } from '@angular/core';
+import { FormsModule } from '@angular/forms'
 import { Router } from '@angular/router';
 // import { StorageService } from '../../../auth/services/storage/storage.service';
 import template from './event.template.html';
@@ -9,10 +10,10 @@ import moment from 'moment-timezone';
   template: template
 })
 
-export class EventComponent implements OnInit {
+export class EventComponent implements AfterViewInit {
 
-  constructor(
-              router: Router) {
+  constructor(router: Router, renderer: Renderer) {
+
     this._router = router;
     this.now = false;
     this.dates = {
@@ -21,8 +22,16 @@ export class EventComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    // this.testCalendar();
+  @ViewChildren('datepicker') input;
+
+  ngAfterViewInit() {
+    // testCalendar()
+    // let endDate = new Flatpickr(this.input.nativeElement);
+
+    for (var i of this.input) {
+      new Flatpickr(i.nativeElement)
+    }
+
   }
 
   testCalendar() {
@@ -54,6 +63,18 @@ export class EventComponent implements OnInit {
           });
       });
 
+  }
+
+  onStartDateChange(startDate) {
+    // TODO: create UTC date with moment
+    console.log('start date changed', startDate);
+    this.dates.minDate = startDate;
+  }
+
+  onEndDateChange(endDate) {
+    // TODO: create UTC date with moment
+    console.log('end date changed', endDate);
+    this.dates.maxDate = endDate;
   }
 
   createEvent() {

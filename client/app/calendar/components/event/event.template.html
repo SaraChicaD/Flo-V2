@@ -1,10 +1,33 @@
 <div class="add-flo">
     <div class="add-flo-container">
         <h1 class="add-flo--title">Add a Flo</h1>
+        <div>
+          <label>Flo Start Date</label>
+          <input
+            #datepicker
+            name="startDate"
+            type="text"
+            placeholder="Select Date.."
+            [value]="dates.minDate"
+            (input)="onStartDateChange($event.target.value)"
+          >
+        </div>
 
-          <button class="add-flo--button" id="event-button"
-              (click)="createEvent()">
-              CREATE FLO
-          </button>
+        <div>
+          <label>Flo End Date</label>
+          <input
+            #datepicker
+            name="endDate"
+            type="text"
+            placeholder="Select Date.."
+            [value]="dates.maxDate"
+            (input)="onEndDateChange($event.target.value)"
+          >
+        </div>
+
+        <button class="add-flo--button" id="event-button"
+            (click)="createEvent()">
+            CREATE FLO
+        </button>
     </div>
 </div>
