@@ -98,30 +98,45 @@ export class EventComponent implements AfterViewInit {
     }
 
     gapi.client.load('calendar', 'v3', () => {
-			let request = gapi.client.calendar.calendarList.list();
+			
+      let request = gapi.client.calendar.calendarList.list();
+
 			request.execute((resp) => {
         console.log('resp', resp);
 				// Check if Flo is present, else create it
-				let floCal = resp.items.filter((item) => {
+				let floCal = resp.items.find((item) => {
 					return item.summary === 'Flo';
 				});
 
-        console.log(floCal, 'floCal');
+        if(floCal){
+          let floId = floCal.id;
+          let request = gapi.client.calendar.events.insert({
+           'calendarId': floId,
+           'resource': event
+          });
+          console.log('event 117', event);
 
-				let floId = floCal[0].id;
+          request.execute((event) => {
+            // $('.event').append('Event created: ' + event.htmlLink);
+            console.log('event 121', event);
+          });
 
-				let request = gapi.client.calendar.events.insert({
-					'calendarId': floId,
-					'resource': event
-				});
-				console.log('request', request);
+        } else {
 
-				request.execute((event) => {
-					// $('.event').append('Event created: ' + event.htmlLink);
-					console.log('event', event);
-				});
+          let request = gapi.client.calendar.calendars.insert({
+            'summary': 'Flo',
+            //maybe get this dynamically
+            'time_zone': 'America/Los_Angeles'
+          });
+
+          request.execute((event) => {
+            // $('.event').append('Event created: ' + event.htmlLink);
+            console.log('event', event);
+          });
+        }        
 
 			});
+
     });
   }
 
