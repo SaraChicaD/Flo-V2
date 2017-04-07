@@ -14,5 +14,4 @@ add your Google client id to .env
 
 ## Start
 
-gulp serve
-port 8000
+`gulp serve` on port 8000

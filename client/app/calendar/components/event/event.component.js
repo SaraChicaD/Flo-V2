@@ -13,7 +13,6 @@ import moment from 'moment-timezone';
 export class EventComponent implements AfterViewInit {
 
   constructor(router: Router, renderer: Renderer) {
-
     this._router = router;
     this.now = false;
     this.dates = {
@@ -31,7 +30,6 @@ export class EventComponent implements AfterViewInit {
     for (var i of this.input) {
       new Flatpickr(i.nativeElement)
     }
-
   }
 
   testCalendar() {
@@ -62,17 +60,14 @@ export class EventComponent implements AfterViewInit {
             });
           });
       });
-
   }
 
   onStartDateChange(startDate) {
-    // TODO: create UTC date with moment
     console.log('start date changed', startDate);
     this.dates.minDate = startDate;
   }
 
   onEndDateChange(endDate) {
-    // TODO: create UTC date with moment
     console.log('end date changed', endDate);
     this.dates.maxDate = endDate;
   }
@@ -86,10 +81,12 @@ export class EventComponent implements AfterViewInit {
       'location': 'Wherever I am',
       'description': 'bleeding all day',
       'start': {
-        'dateTime': this.dates.minDate.format(),
+        // 'dateTime': this.dates.minDate.format(),
+        'dateTime': moment.utc(this.dates.minDate).format(),
       },
       'end': {
-        'dateTime': this.dates.maxDate.format(),
+        // 'dateTime': this.dates.maxDate.format(),
+        'dateTime': moment.utc(this.dates.maxDate).format(),
       },
       'reminders': {
         'useDefault': false,
@@ -101,7 +98,6 @@ export class EventComponent implements AfterViewInit {
     }
 
     gapi.client.load('calendar', 'v3', () => {
-
 			let request = gapi.client.calendar.calendarList.list();
 			request.execute((resp) => {
         console.log('resp', resp);
@@ -109,6 +105,8 @@ export class EventComponent implements AfterViewInit {
 				let floCal = resp.items.filter((item) => {
 					return item.summary === 'Flo';
 				});
+
+        console.log(floCal, 'floCal');
 
 				let floId = floCal[0].id;
 
@@ -120,7 +118,6 @@ export class EventComponent implements AfterViewInit {
 
 				request.execute((event) => {
 					// $('.event').append('Event created: ' + event.htmlLink);
-
 					console.log('event', event);
 				});
 
@@ -129,9 +126,9 @@ export class EventComponent implements AfterViewInit {
   }
 
   onDateRangeChanged(event:any) {
-        console.log('onDateRangeChanged(): Begin date: ', event.beginDate, ' End date: ', event.endDate);
-        console.log('onDateRangeChanged(): Formatted: ', event.formatted);
-        console.log('onDateRangeChanged(): BeginEpoc timestamp: ', event.beginEpoc, ' - endEpoc timestamp: ', event.endEpoc);
+      console.log('onDateRangeChanged(): Begin date: ', event.beginDate, ' End date: ', event.endDate);
+      console.log('onDateRangeChanged(): Formatted: ', event.formatted);
+      console.log('onDateRangeChanged(): BeginEpoc timestamp: ', event.beginEpoc, ' - endEpoc timestamp: ', event.endEpoc);
     }
 
 	// $scope.options = {

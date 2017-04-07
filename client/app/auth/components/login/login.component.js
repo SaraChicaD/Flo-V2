@@ -13,16 +13,13 @@ export class LoginComponent {
 
   constructor(router: Router,
               userService: UserService) {
-
     this._userService = userService;
     this._router = router;
     this._clientId = clientId;
     this._scopes = 'https://www.googleapis.com/auth/calendar';
     console.log('id', this._clientId)
-
-    console.log('gapi', gapi)
+    // console.log('gapi', gapi)
   }
-
 
   login(authResult) {
     console.log('auth result', authResult);
