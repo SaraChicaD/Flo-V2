@@ -14,6 +14,7 @@
             <li class="site-header--navigation-list-item"><a class="site-header--navigation-list-item-link" [routerLink]="['about']">{{ 'menu.about' | translate }}</a></li>
             <li class="site-header--navigation-list-item"><a class="site-header--navigation-list-item-link" [routerLink]="['']" *ngIf="!(getLoggedIn() | async)">{{ 'menu.login' | translate }}</a></li>
             <li class="site-header--navigation-list-item"><a class="site-header--navigation-list-item-link" [routerLink]="['add-flo']" *ngIf="getLoggedIn() | async">{{ 'menu.addFlo' | translate }}</a></li>
+            <li class="site-header--navigation-list-item"><a class="site-header--navigation-list-item-link" [routerLink]="['add-reminder']" *ngIf="getLoggedIn() | async">{{ 'menu.addReminder' | translate }}</a></li>
             <li class="site-header--navigation-list-item"><a class="site-header--navigation-list-item-link" href="#" (click)="logout()" *ngIf="getLoggedIn() | async">{{ 'menu.logout' | translate }}</a></li>
         </ul>
     </nav>

@@ -4,6 +4,7 @@ export const translation = {
   menu: {
     about: 'About',
     addFlo: 'Add Flo',
+    addReminder: 'Add Reminder',
     login: 'Login',
     logout: 'Logout'
   }

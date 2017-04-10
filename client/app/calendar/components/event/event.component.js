@@ -122,6 +122,9 @@ export class EventComponent implements AfterViewInit {
           });
 
         } else {
+          //TODO: when creating this, doesn't add event ALSO
+          //either adds event to existing, or adds calendar
+          //but should add calendar && add event
 
           let request = gapi.client.calendar.calendars.insert({
             'summary': 'Flo',
