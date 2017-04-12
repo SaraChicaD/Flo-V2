@@ -16,8 +16,8 @@ export class EventComponent implements AfterViewInit {
     this._router = router;
     this.now = false;
     this.dates = {
-    	minDate: moment.tz().hour(12).startOf('h'), //12:00 User Timezone, today.
-    	maxDate: moment.tz().add(5, 'd').hour(12).startOf('h'), //12:00 User Timezone, in five days.
+      minDate: moment.tz().hour(12).startOf('h'), //12:00 User Timezone, today.
+      maxDate: moment.tz().add(5, 'd').hour(12).startOf('h'), //12:00 User Timezone, in five days.
     }
   }
 
@@ -74,7 +74,7 @@ export class EventComponent implements AfterViewInit {
 
   createEvent() {
 
-    console.log('creating event');
+    // console.log('creating event');
 
     let event = {
       'summary': 'Period #MyFlo',
@@ -98,47 +98,43 @@ export class EventComponent implements AfterViewInit {
     }
 
     gapi.client.load('calendar', 'v3', () => {
-			
+      
       let request = gapi.client.calendar.calendarList.list();
 
-			request.execute((resp) => {
-        console.log('resp', resp);
-				// Check if Flo is present, else create it
-				let floCal = resp.items.find((item) => {
-					return item.summary === 'Flo';
-				});
-
+      request.execute((resp) => {
+        // console.log('resp', resp);
+        // Check if Flo is present, else create it
+        let floCal = resp.items.find((item) => {
+          return item.summary === 'Flo';
+        });
+        //add event to Flo calendar
         if(floCal){
           let floId = floCal.id;
           let request = gapi.client.calendar.events.insert({
            'calendarId': floId,
            'resource': event
           });
-          console.log('event 117', event);
 
           request.execute((event) => {
             // $('.event').append('Event created: ' + event.htmlLink);
-            console.log('event 121', event);
           });
-
+        //create Flo calendar
         } else {
-          //TODO: when creating this, doesn't add event ALSO
-          //either adds event to existing, or adds calendar
-          //but should add calendar && add event
 
           let request = gapi.client.calendar.calendars.insert({
             'summary': 'Flo',
-            //maybe get this dynamically
+            // get this dynamically
             'time_zone': 'America/Los_Angeles'
           });
 
           request.execute((event) => {
             // $('.event').append('Event created: ' + event.htmlLink);
-            console.log('event', event);
+            //called this again to then CREATE the event after the calendar
+            this.createEvent();
           });
         }        
 
-			});
+      });
 
     });
   }
@@ -149,48 +145,4 @@ export class EventComponent implements AfterViewInit {
       console.log('onDateRangeChanged(): BeginEpoc timestamp: ', event.beginEpoc, ' - endEpoc timestamp: ', event.endEpoc);
     }
 
-	// $scope.options = {
-	// 	view: 'date',
-	// 	format: 'lll',
-	// 	maxView: false,
-	// 	minView: 'hours',
-	// };
-  //
-	// $scope.formats = [
-	// 	 "MMMM YYYY",
-	// 	 "DD MMM YYYY",
-	// 	 "ddd MMM DD YYYY",
-	// 	 "D MMM YYYY HH:mm",
-	// 	 "lll",
-	// ];
-  //
-	// $scope.views = ['year', 'month', 'date', 'hours', 'minutes'];
-	// $scope.callbackState = 'Callback: Not fired';
-  //
-	// $scope.changeDate = function (modelName, newDate) {
-	// 	console.log(modelName + ' has had a date change. New value is ' + newDate.format());
-	// 	$scope.callbackState = 'Callback: Fired';
-	// }
-  //
-	// $scope.changeData = function (type) {
-	// 	var values = {},
-	// 			pickersToUpdate = ['pickerRange'];
-	// 	switch (type) {
-	// 		case 'view':
-	// 			values.view = $scope.options.view;
-	// 			break;
-	// 		case 'minView':
-	// 			values.minView = $scope.options.minView;
-	// 			break;
-	// 		case 'maxView':
-	// 			values.maxView = $scope.options.maxView;
-	// 			break;
-	// 		case 'format':
-	// 			values.format = $scope.options.format;
-	// 			break;
-	// 	}
-	// 	if (values) {
-	// 		$scope.$broadcast('pickerUpdate', pickersToUpdate, values);
-	// 	}
-	// }
 }
