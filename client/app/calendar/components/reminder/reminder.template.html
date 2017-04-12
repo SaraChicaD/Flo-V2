@@ -1,20 +1,12 @@
 <div class="add-flo">
     <div class="add-flo-container">
-        <h1 class="add-flo--title">Add a Flo Reminder</h1>
+        <h1 class="add-flo--title">Add Flo Reminder</h1>
         <div>
           <label>Flo Reminder Date</label>
-          <input
-            #datepicker
-            name="startDate"
-            type="text"
-            placeholder="Select Date.."
-            [value]="dates.minDate"
-            (input)="onStartDateChange($event.target.value)"
-          >
+          <input />
         </div>
 
-        <button class="add-flo--button" id="reminder-button"
-            (click)="createEvent()">
+        <button class="add-flo--button" id="reminder-button">
             FLO REMINDER
         </button>
 

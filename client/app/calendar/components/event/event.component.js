@@ -81,15 +81,13 @@ export class EventComponent implements AfterViewInit {
     // console.log('creating event');
 
     let event = {
-      'summary': 'Period #MyFlo',
-      'location': 'Wherever I am',
-      'description': 'bleeding all day',
+      'summary': 'Flo',
+      'location': 'My body',
+      'description': '#MyFlo #FloLife',
       'start': {
-        // 'dateTime': this.dates.minDate.format(),
         'dateTime': moment.utc(this.dates.minDate).format(),
       },
       'end': {
-        // 'dateTime': this.dates.maxDate.format(),
         'dateTime': moment.utc(this.dates.maxDate).format(),
       },
       'reminders': {
@@ -101,13 +99,13 @@ export class EventComponent implements AfterViewInit {
       }
     }
 
+    // Check if Flo is present, else create it
     gapi.client.load('calendar', 'v3', () => {
       
       let request = gapi.client.calendar.calendarList.list();
 
       request.execute((resp) => {
         // console.log('resp', resp);
-        // Check if Flo is present, else create it
         let floCal = resp.items.find((item) => {
           return item.summary === 'Flo';
         });
@@ -119,9 +117,7 @@ export class EventComponent implements AfterViewInit {
            'resource': event
           });
 
-          request.execute((event) => {
-            // $('.event').append('Event created: ' + event.htmlLink);
-          });
+          request.execute((event) => {});
         //create Flo calendar
         } else {
 
@@ -132,7 +128,6 @@ export class EventComponent implements AfterViewInit {
           });
 
           request.execute((event) => {
-            // $('.event').append('Event created: ' + event.htmlLink);
             //TODO called this again to then CREATE the event after 
             //the calendar, needs refactor, too brute
             this.createEvent();

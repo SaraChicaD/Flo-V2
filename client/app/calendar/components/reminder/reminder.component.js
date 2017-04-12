@@ -12,64 +12,24 @@ import moment from 'moment-timezone';
 
 export class ReminderComponent implements AfterViewInit {
 
-  constructor(router: Router, renderer: Renderer) {
-    this._router = router;
-    this.now = false;
-    this.dates = {
-    	minDate: moment.tz().hour(12).startOf('h'), //12:00 User Timezone, today.
-    	// maxDate: moment.tz().add(5, 'd').hour(12).startOf('h'), //12:00 User Timezone, in five days.
-    }
-  }
-
-  @ViewChildren('datepicker') input;
-
-  ngAfterViewInit() {
-    // testCalendar()
-    // let endDate = new Flatpickr(this.input.nativeElement);
-
-    for (var i of this.input) {
-      new Flatpickr(i.nativeElement)
-    }
-  }
-
-  // testCalendar() {
-  //     gapi.client.load('calendar', 'v3', function() {
-  //         let request = gapi.client.calendar.calendarList.list();
-  //         request.execute((resp) => {
-  //             console.log('resp', resp);
-  //             resp.items.forEach((item) => {
-  //                 console.log(item.id);
-  //             });
-
-
-  //             request.execute((resp) => {
-  //                 let flo = resp.items.filter((item) => {
-  //                   return item.summary === 'Flo';
-  //                 })
-
-  //                 console.log('flo', flo);
-  //             });
-  //         });
-  //         let request1 = gapi.client.calendar.events.list({
-  //             'calendarId': 'primary',
-  //             'timeMin': '2015-12-23T04:26:52.000Z'//Suppose that you want get data after 23 Dec 2014
-  //          });
-  //         request1.execute((resp) => {
-  //           resp.items.forEach((item) => {
-  //               console.log(item.id);
-  //           });
-  //         });
-  //     });
+  // constructor(router: Router, renderer: Renderer) {
+  //   this._router = router;
+  //   this.now = false;
+  //   this.dates = {
+  //   	minDate: moment.tz().hour(12).startOf('h'), //12:00 User Timezone, today.
+  //   	// maxDate: moment.tz().add(5, 'd').hour(12).startOf('h'), //12:00 User Timezone, in five days.
+  //   }
   // }
 
-  // onStartDateChange(startDate) {
-  //   console.log('start date changed', startDate);
-  //   this.dates.minDate = startDate;
-  // }
+  // // @ViewChildren('datepicker') input;
 
-  // onEndDateChange(endDate) {
-  //   console.log('end date changed', endDate);
-  //   this.dates.maxDate = endDate;
+  // ngAfterViewInit() {
+  //   // testCalendar()
+  //   // let endDate = new Flatpickr(this.input.nativeElement);
+
+  //   for (var i of this.input) {
+  //     new Flatpickr(i.nativeElement)
+  //   }
   // }
 
   // createEvent() {
@@ -143,54 +103,6 @@ export class ReminderComponent implements AfterViewInit {
   //   });
   // }
 
-  // onDateRangeChanged(event:any) {
-  //     console.log('onDateRangeChanged(): Begin date: ', event.beginDate, ' End date: ', event.endDate);
-  //     console.log('onDateRangeChanged(): Formatted: ', event.formatted);
-  //     console.log('onDateRangeChanged(): BeginEpoc timestamp: ', event.beginEpoc, ' - endEpoc timestamp: ', event.endEpoc);
-  //   }
 
-	// $scope.options = {
-	// 	view: 'date',
-	// 	format: 'lll',
-	// 	maxView: false,
-	// 	minView: 'hours',
-	// };
-  //
-	// $scope.formats = [
-	// 	 "MMMM YYYY",
-	// 	 "DD MMM YYYY",
-	// 	 "ddd MMM DD YYYY",
-	// 	 "D MMM YYYY HH:mm",
-	// 	 "lll",
-	// ];
-  //
-	// $scope.views = ['year', 'month', 'date', 'hours', 'minutes'];
-	// $scope.callbackState = 'Callback: Not fired';
-  //
-	// $scope.changeDate = function (modelName, newDate) {
-	// 	console.log(modelName + ' has had a date change. New value is ' + newDate.format());
-	// 	$scope.callbackState = 'Callback: Fired';
-	// }
-  //
-	// $scope.changeData = function (type) {
-	// 	var values = {},
-	// 			pickersToUpdate = ['pickerRange'];
-	// 	switch (type) {
-	// 		case 'view':
-	// 			values.view = $scope.options.view;
-	// 			break;
-	// 		case 'minView':
-	// 			values.minView = $scope.options.minView;
-	// 			break;
-	// 		case 'maxView':
-	// 			values.maxView = $scope.options.maxView;
-	// 			break;
-	// 		case 'format':
-	// 			values.format = $scope.options.format;
-	// 			break;
-	// 	}
-	// 	if (values) {
-	// 		$scope.$broadcast('pickerUpdate', pickersToUpdate, values);
-	// 	}
-	// }
+	
 }
