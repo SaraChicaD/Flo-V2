@@ -22,7 +22,7 @@ export class LoginComponent {
   }
 
   login(authResult) {
-    console.log('auth result', authResult);
+    console.log('auth result from LoginComponent', authResult);
 
     if (authResult && !authResult.error) {
       console.log('auth', authResult);

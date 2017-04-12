@@ -73,6 +73,10 @@ export class EventComponent implements AfterViewInit {
   }
 
   createEvent() {
+    //TODO could probably move this somewhere else but sara isn't super sure
+    //how to import/export/pass vars around in angular2
+    let userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    // console.log(userTimezone, 'userTimezone');
 
     // console.log('creating event');
 
@@ -124,12 +128,13 @@ export class EventComponent implements AfterViewInit {
           let request = gapi.client.calendar.calendars.insert({
             'summary': 'Flo',
             // get this dynamically
-            'time_zone': 'America/Los_Angeles'
+            'time_zone': userTimezone
           });
 
           request.execute((event) => {
             // $('.event').append('Event created: ' + event.htmlLink);
-            //called this again to then CREATE the event after the calendar
+            //TODO called this again to then CREATE the event after 
+            //the calendar, needs refactor, too brute
             this.createEvent();
           });
         }        

@@ -15,3 +15,6 @@ add your Google client id to .env
 ## Start
 
 `gulp serve` on port 8000
+
+##Notes:
+- We made a choice to support modern browsers for this app.
