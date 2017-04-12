@@ -3,10 +3,18 @@
         <h1 class="add-flo--title">Add Flo Reminder</h1>
         <div>
           <label>Flo Reminder Date</label>
-          <input />
+          <input
+            #datepicker
+            name="numDays"
+            type="text"
+            placeholder="Select Number of Days"
+            [value]="dates.numDays"
+            (input)="onNumChange($event.target.value)"
+          >
         </div>
 
-        <button class="add-flo--button" id="reminder-button">
+        <button class="add-flo--button" id="reminder-button"
+        (click)="onNumChange()">
             CREATE REMINDER
         </button>
 

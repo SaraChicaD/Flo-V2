@@ -12,14 +12,18 @@ import moment from 'moment-timezone';
 
 export class ReminderComponent implements AfterViewInit {
 
-  // constructor(router: Router, renderer: Renderer) {
-  //   this._router = router;
-  //   this.now = false;
-  //   this.dates = {
-  //   	minDate: moment.tz().hour(12).startOf('h'), //12:00 User Timezone, today.
-  //   	// maxDate: moment.tz().add(5, 'd').hour(12).startOf('h'), //12:00 User Timezone, in five days.
-  //   }
-  // }
+  constructor(router: Router, renderer: Renderer) {
+    this._router = router;
+    this.now = false;
+    this.dates = {
+    	numDays: 7, //12:00 User Timezone, today.
+    }
+  }
+
+  onNumChange(numDays) {
+    console.log('numDays changed', numDays);
+    // this.dates.minDate = startDate;
+  }
 
   // // @ViewChildren('datepicker') input;
 
