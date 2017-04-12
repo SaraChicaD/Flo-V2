@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import template from './event.template.html';
 import moment from 'moment-timezone';
 
+//TODO we need to get the length of the events, aka # of days of cycle, export that and
+//pop it into a formula to track periods, export that into reminder component.
+
 @Component({
   selector: 'event',
   template: template
@@ -26,40 +29,9 @@ export class EventComponent implements AfterViewInit {
   ngAfterViewInit() {
     // testCalendar()
     // let endDate = new Flatpickr(this.input.nativeElement);
-
     for (var i of this.input) {
       new Flatpickr(i.nativeElement)
     }
-  }
-
-  testCalendar() {
-      gapi.client.load('calendar', 'v3', function() {
-          let request = gapi.client.calendar.calendarList.list();
-          request.execute((resp) => {
-              console.log('resp', resp);
-              resp.items.forEach((item) => {
-                  console.log(item.id);
-              });
-
-
-              request.execute((resp) => {
-                  let flo = resp.items.filter((item) => {
-                    return item.summary === 'Flo';
-                  })
-
-                  console.log('flo', flo);
-              });
-          });
-          let request1 = gapi.client.calendar.events.list({
-              'calendarId': 'primary',
-              'timeMin': '2015-12-23T04:26:52.000Z'//Suppose that you want get data after 23 Dec 2014
-           });
-          request1.execute((resp) => {
-            resp.items.forEach((item) => {
-                console.log(item.id);
-            });
-          });
-      });
   }
 
   onStartDateChange(startDate) {
@@ -76,9 +48,6 @@ export class EventComponent implements AfterViewInit {
     //TODO could probably move this somewhere else but sara isn't super sure
     //how to import/export/pass vars around in angular2
     let userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    // console.log(userTimezone, 'userTimezone');
-
-    // console.log('creating event');
 
     let event = {
       'summary': 'Flo',
@@ -143,6 +112,36 @@ export class EventComponent implements AfterViewInit {
       console.log('onDateRangeChanged(): Begin date: ', event.beginDate, ' End date: ', event.endDate);
       console.log('onDateRangeChanged(): Formatted: ', event.formatted);
       console.log('onDateRangeChanged(): BeginEpoc timestamp: ', event.beginEpoc, ' - endEpoc timestamp: ', event.endEpoc);
-    }
+  }
+
+  testCalendar() {
+      gapi.client.load('calendar', 'v3', function() {
+          let request = gapi.client.calendar.calendarList.list();
+          request.execute((resp) => {
+              console.log('resp', resp);
+              resp.items.forEach((item) => {
+                  console.log(item.id);
+              });
+
+
+              request.execute((resp) => {
+                  let flo = resp.items.filter((item) => {
+                    return item.summary === 'Flo';
+                  })
+
+                  console.log('flo', flo);
+              });
+          });
+          let request1 = gapi.client.calendar.events.list({
+              'calendarId': 'primary',
+              'timeMin': '2015-12-23T04:26:52.000Z'//Suppose that you want get data after 23 Dec 2014
+           });
+          request1.execute((resp) => {
+            resp.items.forEach((item) => {
+                console.log(item.id);
+            });
+          });
+      });
+  }
 
 }

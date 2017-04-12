@@ -16,25 +16,19 @@ export class ReminderComponent implements AfterViewInit {
     this._router = router;
     this.now = false;
     this.dates = {
-    	numDays: 7, //12:00 User Timezone, today.
+    	numDays: 7, 
     }
   }
 
   onNumChange(numDays) {
     console.log('numDays changed', numDays);
-    // this.dates.minDate = startDate;
+    //format for Google API: 2017-04-17T12:00:00Z
+    //moment('2016-03-12 13:00:00').add(1, 'day').format('LLL')
+    //^^ take estimated start date, add numDays to it, then format && create a calendar event
   }
 
-  // // @ViewChildren('datepicker') input;
-
-  // ngAfterViewInit() {
-  //   // testCalendar()
-  //   // let endDate = new Flatpickr(this.input.nativeElement);
-
-  //   for (var i of this.input) {
-  //     new Flatpickr(i.nativeElement)
-  //   }
-  // }
+  //TODO we want to take an input #, turn it into a moment.js #
+  //create an event that will be the # of days out of the input #
 
   // createEvent() {
 
