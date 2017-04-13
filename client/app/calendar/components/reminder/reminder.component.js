@@ -1,3 +1,7 @@
+//ALGORITHM LINKS
+// http://jsfiddle.net/2sf4gfdr/
+// http://stackoverflow.com/questions/27671225/menstrual-tracking-calendar
+
 import { AfterViewInit, Component, ViewChildren, Renderer } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import { Router } from '@angular/router';
@@ -25,6 +29,11 @@ export class ReminderComponent implements AfterViewInit {
     //format for Google API: 2017-04-17T12:00:00Z
     //moment('2016-03-12 13:00:00').add(1, 'day').format('LLL')
     //^^ take estimated start date, add numDays to it, then format && create a calendar event
+  }
+
+  onReminderChange(reminderName) {
+    console.log('reminderName changed', reminderName);
+    //format for Google API: 2017-04-17T12:00:00Z
   }
 
   //TODO we want to take an input #, turn it into a moment.js #

@@ -1,15 +1,28 @@
+<!-- TODO: make custom input/variable for reminder name, "description"? -->
+
 <div class="add-flo">
     <div class="add-flo-container">
         <h1 class="add-flo--title">Add Flo Reminder</h1>
         <div>
-          <label>Days Before Flo:</label>
-          <input
-            name="numDays"
-            type="text"
-            placeholder="Select Number of Days"
-            [value]="dates.numDays"
-            (input)="onNumChange($event.target.value)"
-          >
+        <label>Name Yo Flo Reminder:</label>
+        <input
+          name="reminderName"
+          type="text"
+          placeholder="Name Your Reminder"
+          [value]="reminderName"
+          (input)="onReminderChange($event.target.value)"
+        >
+        </div>
+
+        <div>
+            <label>Days Before Flo:</label>
+            <input
+              name="numDays"
+              type="text"
+              placeholder="Select Number of Days"
+              [value]="dates.numDays"
+              (input)="onNumChange($event.target.value)"
+            >
         </div>
 
         <button class="add-flo--button" id="reminder-button"
