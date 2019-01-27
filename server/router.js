@@ -15,12 +15,12 @@ router.post('/login', function*() {
 
   if (code) {
     result.success = true;
-    result.auth_token = jwt.sign({ code: code }, config.jwt_secret);
+    // result.auth_token = jwt.sign({ code: code }, config.jwt_secret);
+    result.auth_token = code;
   }
 
   this.body = result;
 
-  console.log('hit');
 });
 
 module.exports = router;
